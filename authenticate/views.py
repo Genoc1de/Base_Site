@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 def home(request):
-    return render(request, 'authenticate/home.html')
+    return render(request, 'pages/home.html')
 
 
 def login_user(request):
@@ -82,3 +82,9 @@ def change_password(request):
         'form': form,
     }
     return render(request, 'authenticate/change_password.html', context)
+
+def profile(request):
+    return render(request, 'pages/profile.html')
+
+def maps(request):
+    return render(request, 'pages/maps.html')

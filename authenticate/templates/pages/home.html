@@ -17,15 +17,10 @@
 <div class="col-md-6 offset-md-3">
 
     {% if request.user.is_authenticated %}
-    <h1 class="text-muted text-center mt-3 mb-3">User Information</h1>
-    <ul class="list-group">
-        <li class="list-group-item"><b>Name:</b> {{ user.first_name }} {{ user.last_name }}</li>
-        <li class="list-group-item"><b>Username:</b> {{ user.username }}</li>
-        <li class="list-group-item"><b>Email:</b> {{ user.email }}</li>
-    </ul>
+    <h1 class="text-muted text-center mt-3 mb-3">Test</h1>
+
     {% else %}
-    <h1 class="text-muted text-center mt-5 mb-5">Welcome to User Authentication App</h1>
-    <h2 class="text-muted text-center mt-5">Login to see user information</h2>
+    <h2 class="text-muted text-center mt-5">Авторизуйтесь, чтобы увидеть информацию</h2>
     {% endif %}
 </div>
 {% endblock content %}
