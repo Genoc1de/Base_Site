@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="text-center mt-4 text-muted">
-    <h2>User Login</h2>
+    <h2>Войти в систему</h2>
 </div>
 <div class="col-md-6 offset-md-3">
     {% if messages %}
@@ -19,15 +19,14 @@
     <form action="{% url 'login' %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="Enter Password">
+            <label for="username">Имя:</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Введите имя">
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
+            <label for="password">Пароль:</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль">
         </div>
-        <button type="submit" class="btn btn-secondary mb-3">Login</button>
-        <p>Forgot password ??<a href="{% url 'password_reset' %}"> Click Here</a> To Reset</p>
+        <button type="submit" class="btn btn-secondary mb-3">Войти</button>
     </form>
 </div>
 {% endblock content %}

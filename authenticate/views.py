@@ -31,25 +31,21 @@ def logout_user(request):
     messages.success(request, "Logged out successfully")
     return redirect('home')
 
-
-def register_user(request):
+def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
-            user = authenticate(request, username=username, password=password)
+            user = form.save(commit=False)
+            user.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
-        else:
-            form = SignUpForm(request.POST)
     else:
         form = SignUpForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'authenticate/register.html', context)
+    return render(request, 'authenticate/register.html', {'form': form})
+
 
 
 def edit_profile(request):

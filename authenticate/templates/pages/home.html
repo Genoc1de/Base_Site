@@ -21,6 +21,14 @@
 
     {% else %}
     <h2 class="text-muted text-center mt-5">Авторизуйтесь, чтобы увидеть информацию</h2>
+    <div class="col mt-3">
+        <a class="btn btn-primary float-left" href="{% url 'login' %}">Войти</a>
+        <a class="btn btn-primary float-right" href="{% url 'register' %}">Зарегистрироваться</a>
+    </div>
+
+
+
+
     {% endif %}
 </div>
 {% endblock content %}
