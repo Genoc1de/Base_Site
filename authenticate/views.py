@@ -81,3 +81,6 @@ def change_password(request):
 
 def profile(request):
     return render(request, 'pages/profile.html')
+
+def maps(request):
+    return render(request, 'pages/maps.html')
