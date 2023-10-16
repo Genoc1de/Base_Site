@@ -20,18 +20,21 @@
             aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-               <a class="navbar-brand" href="{% url 'home' %}">Name</a>
+               <a class="navbar-brand" href="{% url 'home' %}">Сайт Миланы и Никиты</a>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" style="color:white;" href="{% url 'profile' %}">{{ user.username }}</a>
+                    <a class="nav-link" style="color:white;" href="{% url 'home' %}">Главная страница</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="{% url 'profile' %}">Аккаунт: {{ user.username }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color:white;" href="{% url 'maps' %}">Карта</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Выйти из аккаунта</a>
                 </li>
                 {% endif %}
             </ul>

@@ -17,10 +17,10 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'You have been logged in successfully')
+            messages.success(request, 'Вы успешно авторизовались!')
             return redirect('home')
         else:
-            messages.warning(request, "Username or Password is incorrect !!")
+            messages.warning(request, "Некорректный логин или пароль!")
             return redirect('login')
     else:
         return render(request, 'authenticate/login.html')
@@ -28,7 +28,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    messages.success(request, "Logged out successfully")
+    messages.success(request, "Вы вышли из аккаунта")
     return redirect('home')
 
 def signup(request):
@@ -53,7 +53,7 @@ def edit_profile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, "Profile Updated Successfully")
+            messages.success(request, "Профиль успешно обновлен")
             return redirect('home')
     else:
         form = EditProfileForm(instance=request.user)
@@ -69,7 +69,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            messages.success(request, "Password Changed Successfully")
+            messages.success(request, "Пароль успешно изменен")
             return redirect('home')
     else:
         form = ChangePasswordForm(user=request.user)

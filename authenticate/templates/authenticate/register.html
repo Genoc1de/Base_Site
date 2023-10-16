@@ -22,10 +22,10 @@
                    required>
         </div>
         {% if form.errors %}
-        <ul  class="errorlist">
+        <ul class="list-group">
             {% for field, errors in form.errors.items %}
             {% for error in errors %}
-            <li style="list-style-type: none;">{{ error }}</li>
+            <li  class="list-group-item list-group-item-danger mb-4" style="list-style-type: none;">{{ error }}</li>
             {% endfor %}
             {% endfor %}
         </ul>
