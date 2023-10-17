@@ -1,7 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
-
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -21,4 +20,6 @@ urlpatterns = [
          name='password_reset_complete'),
     path('profile/', views.profile, name='profile'),
     path('maps/', views.maps, name='maps'),
+    path('<int:pk>/', views.ArticleDetailView.as_view(), name='post_detail'),
+
 ]

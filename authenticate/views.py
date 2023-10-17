@@ -1,12 +1,14 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
+
 from .forms import SignUpForm, EditProfileForm, ChangePasswordForm
 from django.contrib.auth.models import User
+from .models import Post
 
-
-def home(request):
-    return render(request, 'pages/home.html')
 
 
 def login_user(request):
@@ -84,3 +86,31 @@ def profile(request):
 
 def maps(request):
     return render(request, 'pages/maps.html')
+
+def home(request):
+    posts = Post.objects.all()
+    context = {"posts": posts}
+    return render(request, "pages/home.html", context)
+
+class ArticleDetailView(LoginRequiredMixin, DetailView):
+    model = Post
+    template_name = 'pages/post_detail.html'
+
+
+class ArticleUpdateView(LoginRequiredMixin, UpdateView):
+    model = Post
+    fields = ['image_url','title', 'date_posted', ]
+    template_name = 'post_edit.html'
+
+
+class ArticleDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('article_list')
+
+
+class ArticleCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    template_name = "post_new.html"
+    fields = ['image_url','title', 'date_posted']
+    login_url = 'login'
