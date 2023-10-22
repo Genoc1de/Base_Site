@@ -6,11 +6,11 @@ from django.urls import reverse
 
 # Create your models here.
 class Post(models.Model):
-    image_url = models.URLField()
+    image = models.ImageField(upload_to = 'images/')
     title = models.CharField(max_length=100)
-    date_posted = models.DateTimeField()
+    date_posted = models.DateField()
 
     def __str__(self):
         return self.title
     def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
+        return reverse('home', args=[str(self.id)])

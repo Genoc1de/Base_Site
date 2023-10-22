@@ -20,6 +20,8 @@ urlpatterns = [
          name='password_reset_complete'),
     path('profile/', views.profile, name='profile'),
     path('maps/', views.maps, name='maps'),
-    path('<int:pk>/', views.ArticleDetailView.as_view(), name='post_detail'),
+    path('<int:pk>/edit/', views.PostUpdateView.as_view(), name='post_edit'),
+    path('<int:pk>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
+    path('new/', views.PostCreateView.as_view(), name='post_new'),
 
 ]

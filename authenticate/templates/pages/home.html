@@ -17,24 +17,31 @@
     {% if request.user.is_authenticated %}
 
 <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-                  {% for post in posts %}
+    <div class="col py-5" style=" text-align: center;">
+        <a class="btn btn-outline-primary" href="{% url 'post_new'  %}">Добавить запись</a>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
             <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                  <a href="{% url 'post_detail' post.pk %}" style="text-decoration: none;">
-                  <img class="card-img-top"  style="height: 100%; width: 100%; display: block;" src="{{ post.image_url }}">
-                <div class="card-body">
-                  <p class="card-text">{{ post.title }}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">{{ post.date_posted | date:"d.m.Y" }}</small>
-                  </div>
+                <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" style="height: 100%; width: 100%; display: block;"
+                             src="{{ post.image.url }}">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.title }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a type="button" class="btn btn-sm btn-outline-primary" href="{% url 'post_edit' post.pk %}">Редактировать</a>
+                                    <a type="button" class="btn btn-sm btn-outline-danger" href="{% url 'post_delete' post.pk %}">Удалить</a>
+                                </div>
+                                <small class="text-muted">{{ post.date_posted | date:"d.m.Y" }}</small>
+                            </div>
+                        </div>
                 </div>
-              </div>
             </div>
-                  {% endfor %}
-          </div>
+            {% endfor %}
         </div>
+    </div>
 </div>
     {% else %}
 <div class="col-md-6 offset-md-3">

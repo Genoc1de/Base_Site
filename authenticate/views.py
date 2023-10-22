@@ -1,3 +1,6 @@
+import os
+from django.conf import settings
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -92,25 +95,21 @@ def home(request):
     context = {"posts": posts}
     return render(request, "pages/home.html", context)
 
-class ArticleDetailView(LoginRequiredMixin, DetailView):
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
-    template_name = 'pages/post_detail.html'
+    fields = ['image', 'title', 'date_posted']
+    template_name = 'pages/edit_post.html'
+    success_url = reverse_lazy('home')
 
-
-class ArticleUpdateView(LoginRequiredMixin, UpdateView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
-    fields = ['image_url','title', 'date_posted', ]
-    template_name = 'post_edit.html'
+    template_name = 'pages/post_delete.html'
+    success_url = reverse_lazy('home')
 
 
-class ArticleDeleteView(LoginRequiredMixin, DeleteView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    template_name = 'post_delete.html'
-    success_url = reverse_lazy('article_list')
-
-
-class ArticleCreateView(LoginRequiredMixin, CreateView):
-    model = Post
-    template_name = "post_new.html"
-    fields = ['image_url','title', 'date_posted']
-    login_url = 'login'
+    template_name = "pages/post_new.html"
+    fields = ['image','title', 'date_posted']
+    login_url = 'login_user'
