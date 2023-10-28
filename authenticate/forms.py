@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.models import User
 from django import forms
+from models import *
 
 
 class SignUpForm(UserCreationForm):
@@ -38,3 +39,9 @@ class ChangePasswordForm(PasswordChangeForm):
 
     class Meta:
         model = User
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']

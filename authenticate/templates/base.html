@@ -24,14 +24,21 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 {% if request.user.is_authenticated %}
-                <li class="nav-item">
+                <li class="nav-item mx-2">
                     <a class="nav-link" style="color:white;" href="{% url 'home' %}">Главная страница</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" style="color:white;" href="{% url 'maps' %}">Карта</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" style="color:white;" href="{% url 'gallery_list' %}">Галерея</a>
+                </li>
+                <li class="nav-item">
+                    <br>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color:white;" href="{% url 'profile' %}">Аккаунт: {{ user.username }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color:white;" href="{% url 'maps' %}">Карта</a>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Выйти из аккаунта</a>
                 </li>

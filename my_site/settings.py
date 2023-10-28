@@ -25,8 +25,8 @@ SECRET_KEY = '5&f+g839&^encn^exae*j$5%72f06wjv(3r(^ml$pp!kwnstlz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-ALLOWED_HOSTS = ['https://genocidehood132.pythonanywhere.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['https://genocidehood132.pythonanywhere.com']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authenticate.apps.AuthenticateConfig',
+    'gallery'
 ]
 
 MIDDLEWARE = [

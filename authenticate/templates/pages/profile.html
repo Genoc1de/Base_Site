@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
@@ -13,14 +12,18 @@
 </div>
 {% endfor %}
 {% endif %}
-
 <div class="col-md-6 offset-md-3">
-
     {% if request.user.is_authenticated %}
     <h1 class="text-muted text-center mt-3 mb-3">Информация о пользователе</h1>
+
     <ul class="list-group">
-        <li class="list-group-item"><b>{{ user.username }}</b></li>
-        <li class="list-group-item"><b>Электронная почта:</b> {{ user.email }}</li>
+        <div class="row">
+            <image class="img-thumbnail rounded-circle" style="width:200px; height:200px;" src="{{ user.profile.image.url }}"></image>
+            <div class="col my-auto">
+                <li class="list-group-item"><p>Имя пользователя: <b>{{ user.username }}</b></p></li>
+                <li class="list-group-item"><p>Электронная почта: <b>{{ user.email }}</b></p></li>
+            </div>
+        </div>
     </ul>
     <div class="btn float-left mt-1">
         <a class="btn btn-primary" href="{% url 'edit_profile' %}">Редактировать</a>

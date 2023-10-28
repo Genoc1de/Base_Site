@@ -23,5 +23,6 @@ urlpatterns = [
     path('<int:pk>/edit/', views.PostUpdateView.as_view(), name='post_edit'),
     path('<int:pk>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
     path('new/', views.PostCreateView.as_view(), name='post_new'),
+    path('gallery/', include('gallery.urls')),
 
 ]

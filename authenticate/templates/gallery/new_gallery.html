@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5 shadow-none p-3 mb-5 bg-light rounded">
+    <div class="col-md-6 mx-auto ">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="form-group row py-1">
+                <a class="btn btn-outline-primary ml-2" href="{% url 'gallery_list' %}">Назад</a>
+            </div>
+            <div class="form-group row">
+                <h3 class="h3 mx-auto">Добавление новой фотографии</h3>
+            </div>
+            <div class="form-group row">
+                <input accept="image/*" id="{{ form.image_photo.id_for_label }}"  name="{{ form.image_photo.name }}"
+                       type="file" required>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="{{ form.description.id_for_label }}">Текст:</label>
+                <textarea class="form-control" id="{{ form.description.id_for_label }}" name="{{ form.description.name }}"
+                          rows="2" required></textarea>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="{{ form.date.id_for_label }}">Дата:</label>
+                <input class="form-control" id="{{ form.date.id_for_label }}" name="{{ form.date.name }}"
+                       type="date" required>
+            </div>
+            <div class="form-group row">
+                <div class="py-3 mx-auto">
+                    <button class="btn btn-primary" type="submit">Добавить</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+{% endblock %}
+
