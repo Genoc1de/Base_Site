@@ -20,9 +20,11 @@ urlpatterns = [
          name='password_reset_complete'),
     path('profile/', views.profile, name='profile'),
     path('maps/', views.maps, name='maps'),
-    path('<int:pk>/edit/', views.PostUpdateView.as_view(), name='post_edit'),
-    path('<int:pk>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
-    path('new/', views.PostCreateView.as_view(), name='post_new'),
     path('gallery/', include('gallery.urls')),
+    path('2048/', views.game, name='2048'),
+    path('<int:pk>/', views.ElementDetailView.as_view(), name='element_detail'),
+    path('<int:pk>/delete/', views.ElementDeleteView.as_view(), name='element_delete'),
+    path('new/', views.ElementCreateView.as_view(), name='element_new'),
+    path('<int:pk>/edit/', views.ElementUpdateView.as_view(), name='element_edit'),
 
 ]

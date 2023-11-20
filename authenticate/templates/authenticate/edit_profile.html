@@ -5,11 +5,24 @@
     <h2 class="text-muted">Редактирование профиля</h2>
 </div>
 <div class="col-md-6 offset-md-3 mb-4">
-    <form action="{% url 'edit_profile' %}" method="POST">
+    <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group row">
+            <label for="id_username">Имя:</label>
+        </div>
+        <div class="form-group row">
+            <input type="text" name="username" value="admin" class="form-control" maxlength="32" required="" id="id_username">
+        </div>
+        <div class="form-group row">
+            <label for="id_email">Электронная почта:</label>
+        </div>
+        <div class="form-group row">
+            <input type="email" name="email" value="afsasf@mail.ru" class="form-control" maxlength="50" required="" id="id_email">        </div>
+        {{ profile_form.as_p }}
         <button type="submit" class="btn btn-secondary mb-3">Обновить</button>
         <p><a href="{% url 'change_password' %}">Нажми сюда</a> Чтобы изменить свой пароль </p>
     </form>
 </div>
 {% endblock content %}
+
+

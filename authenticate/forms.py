@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.models import User
 from django import forms
-from models import *
+from .models import *
 
 
 class SignUpForm(UserCreationForm):
@@ -20,14 +20,16 @@ class EditProfileForm(UserChangeForm):
                                max_length=32, help_text="<small id='emailHelp' class='form-text text-muted'>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>", widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(label="Email",
                              max_length=50, widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label="",
-                               max_length=50, widget=forms.PasswordInput(attrs={'type': 'hidden'}))
 
     class Meta:
         model = User
         fields = ['username',
                   'email']
 
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']
 
 class ChangePasswordForm(PasswordChangeForm):
     old_password = forms.CharField(label="Old password:",
@@ -41,7 +43,3 @@ class ChangePasswordForm(PasswordChangeForm):
         model = User
 
 
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['image']

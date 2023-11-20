@@ -1,0 +1,49 @@
+
+  {% load static %}
+
+    <link rel="stylesheet" href= "{% static 'css/game.css' %}" />
+
+    <script src="{% static 'js/jquery-1.11.3.js' %}"></script>
+    <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
+    <script src="{% static 'js/game.js' %}"></script>
+    <script src="{% static 'js/board.js' %}"></script>
+    <script src="{% static 'js/tile.js' %}"></script>
+
+  <body>
+
+
+ <div class="above-board">
+      <h1>2048</h1>
+     <div><a class="btn" href="{% url 'home' %}">Назад</a></div>
+      <div class="new-game"><button>Новая игра</button></div>
+      <br/><br/>
+      <div class="score"><span>Счет: 0</span></div>
+    </div>
+
+    <div class="modal"></div>
+    <figure class="game">
+    </figure>
+
+    <div class="below-board">
+      <span>Как играть: используйте клавиши со стрелками на клавиатуре или жесты смахивания на телефоне/планшете.</span>
+    </div>
+
+      <script>
+    $(function() {
+      $(".game").swipe( {
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+        },
+         threshold:0
+      });
+    });
+    </script>
+
+    <script>
+      $(function () {
+        new JSGame.Game($(".game"));
+      });
+    </script>
+  </body>
+
+
+

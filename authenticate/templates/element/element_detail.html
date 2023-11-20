@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5 shadow-none p-3 mb-5 bg-light rounded">
+  <div class="col-md-12 mx-auto ">
+    <a class="btn btn-outline-primary my-4" href="{% url 'home' %}">Назад</a>
+    <a class="btn btn-outline-danger my-4 float-sm-right" href="{% url 'element_delete' element.pk %}">Удалить </a>
+    <a class="btn btn-outline-success my-4 float-sm-right" href="{% url 'element_edit' element.pk %}">Редактировать</a>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h2 class="text-justify text-center">{{ element.title }}</h2>
+        <p class="text-justify">{{ element.text }}</p>
+        {% if element.image %}
+          <img class="img-fluid" src="{{ element.image.url }}" alt="{{ element.title }}">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

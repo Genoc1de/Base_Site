@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5 shadow-none p-3 mb-5 bg-light rounded">
+    <div class="col-md-6 mx-auto ">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="form-group row py-1">
+                <a class="btn btn-outline-primary ml-2" href="{% url 'home' %}">Назад</a>
+            </div>
+            <div class="form-group row">
+                <h3 class="h3 mx-auto text-center">Добавление нового элемента на главный экран</h3>
+            </div>
+            <div class="form-group row">
+                <div class="alert alert-primary" role="alert">
+                    <p>Необходимо заполнять <b>только одно поле</b>, которое нужно вывести на главный экран:<br><br><b>Заголовок/Текст/Изображение</b></p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="{{ form.title.id_for_label }}">Заголовок:</label>
+                <input class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.name }}"
+                       rows="2"></input>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="{{ form.text.id_for_label }}">Текст:</label>
+                <textarea class="form-control" id="{{ form.text.id_for_label }}" name="{{ form.text.name }}"
+                          rows="2"></textarea>
+            </div>
+            <div class="form-group row">
+                <input accept="image/*" id="{{ form.image.id_for_label }}" name="{{ form.image.name }}"
+                       type="file">
+            </div>
+            <div class="form-group row">
+                <div class="py-3 mx-auto">
+                    <button class="btn btn-primary" type="submit">Добавить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
