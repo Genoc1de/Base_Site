@@ -10,7 +10,28 @@
                    <div class="form-group row">
                         <h3 class="h3 mx-auto">Редактирование</h3>
                     </div>
-                    {{form.as_p}}
+                   {% if element.title %}
+                   <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="{{ form.title.id_for_label }}">Заголовок:</label>
+                        <input class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.name }}"
+                               type="text" value="{{ form.title.value }}">
+                    </div>
+                   {% endif %}
+                   {% if element.text %}
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="{{ form.text.id_for_label }}">Текст:</label>
+                        <textarea class="form-control" id="{{ form.text.id_for_label }}" name="{{ form.text.name }}"
+                                  rows="4">{{ form.text.value }}</textarea>
+                    </div>
+                   {% endif %}
+                   {% if element.image %}
+                    <div class="form-group row">
+                        <img src="{{ form.instance.image.url }}" alt="{{ form.instance.de }}" class="img-thumbnail">
+                    </div>
+                   <div class="form-group row">
+                       <input lass="form-control" id="{{ form.image.id_for_label }}" name="{{ form.image.name }}" type="file"  accept="image/*" >
+                   </div>
+                   {% endif %}
                     <div class="form-group row">
                         <div class="py-3 mx-auto">
                             <button class="btn btn-success" type="submit">Обновить</button>
@@ -20,3 +41,43 @@
         </div>
     </div>
 {% endblock %}
+
+
+<form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="rDynTXTnKGHiaJ5XxPVUhuz8FUZoXJL3YAHtIjAEQvGQVcAUYUGVH5x7TFp7sUuw">
+                   <div class="form-group row py-1">
+                        <a class="btn btn-outline-primary my-2" href="/gallery/">Назад</a>
+                   </div>
+                   <div class="form-group row">
+                        <h3 class="h3 mx-auto">Редактирование</h3>
+                    </div>
+                    <p>
+    <label for="id_title">Title:</label>
+    <input type="text" name="title" value="Привет" maxlength="100" id="id_title">
+
+
+  </p>
+
+
+  <p>
+    <label for="id_text">Text:</label>
+    <input type="text" name="text" maxlength="500" id="id_text">
+
+
+  </p>
+
+
+  <p>
+    <label for="id_image">Image:</label>
+    <input type="file" name="image" accept="image/*" id="id_image">
+
+
+
+
+  </p>
+                    <div class="form-group row">
+                        <div class="py-3 mx-auto">
+                            <button class="btn btn-success" type="submit">Обновить</button>
+                        </div>
+                    </div>
+                </form>
